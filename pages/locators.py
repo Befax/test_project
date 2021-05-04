@@ -14,8 +14,14 @@ class LoginPageLocators:
 
 
 class ProductPageLocators:
-    ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
+    ADD_TO_BASKET_BUTTON = (By.CLASS_NAME, "btn-add-to-basket")
     PRICE = (By.XPATH, "//article/div/div/p[1]")
     ITEM_NAME = (By.XPATH, "//h1")
     ITEM_ADDED_TO_BASKET_NAME = (By.XPATH, "//div[@id='messages']/div/div/strong")
     BASKET_TOTAL_NOW = (By.XPATH, "//div/div/div/p/strong")
+    SUCCESS_MESSAGE = (By.CLASS_NAME, "alert-success")
+
+
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")

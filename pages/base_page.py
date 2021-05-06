@@ -7,7 +7,7 @@ import math
 
 
 class BasePage:
-    def __init__(self, browser: RemoteWebDriver, url, timeout=10):
+    def __init__(self, browser: RemoteWebDriver, url, timeout=4):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -15,7 +15,6 @@ class BasePage:
     def fill_the_field(self, how, what, data):
         filled_field = self.browser.find_element(how, what)
         filled_field.send_keys(data)
-
 
     def go_to_basket(self):
         link = self.browser.find_element(*BasePageLocators.BASKET_LINK)

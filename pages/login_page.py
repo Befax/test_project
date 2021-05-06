@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
+from mimesis import Person
 
 
 class LoginPage(BasePage):
@@ -16,3 +17,12 @@ class LoginPage(BasePage):
 
     def should_be_register_form(self):
         assert self.is_element_present(*LoginPageLocators.REGISTER_EMAIL), "Register form is not presented"
+
+    def register_new_user(self):
+        person = Person('en')
+        email = person.email()
+        password = person.password(10)
+        self.fill_the_field(*LoginPageLocators.REGISTER_EMAIL, email)
+        self.fill_the_field(*LoginPageLocators.REGISTER_PASSWORD, password)
+        self.fill_the_field(*LoginPageLocators.REGISTER_CONFIRM_PASSWORD, password)
+        self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON).click()
